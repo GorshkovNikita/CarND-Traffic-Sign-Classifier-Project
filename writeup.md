@@ -19,14 +19,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/number_of_examples.jpg "Visualization"
+[image1]: ./examples/number_of_examples.png "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/sign_example.jpg "Sign example"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image3]: ./german_traffic_signs/sign_example.png "Sign example"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -63,7 +58,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 I decided not to convert the images to grayscale because it can harm model performance since we lose a lot of color information, which can be very useful for determining sign class.
 
-As a last step, I normalized the image data because it improves permormance of optimization algorithm. For that, I used the following formula: `normalized_image = (image - 128) / 128`. It doesn't change the contents of an image but makes mean equals zero.
+As a last step, I normalized the image data because it improves performance of optimization algorithm. For that, I used the following formula: `normalized_image = (image - 128) / 128`. It doesn't change the contents of an image but makes mean equals zero.
 
 Here is an example of an original image:
 
@@ -77,10 +72,10 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x64 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
+| Convolution 5x5	    | etc.      									|
 | Fully connected		| etc.        									|
 | Softmax				| etc.        									|
 |						|												|
@@ -116,10 +111,16 @@ If a well known architecture was chosen:
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are eight German traffic signs that I found on Google Street View:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+<img src="./german_traffic_signs/12.png" height="100">
+<img src="./german_traffic_signs/13.png" height="100">
+<img src="./german_traffic_signs/15.png" height="100">
+<img src="./german_traffic_signs/17.png" height="100">
+<img src="./german_traffic_signs/18.png" height="100">
+<img src="./german_traffic_signs/22.png" height="100">
+<img src="./german_traffic_signs/25.png" height="100">
+<img src="./german_traffic_signs/35.png" height="100">
 
 The first image might be difficult to classify because ...
 
