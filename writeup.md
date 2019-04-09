@@ -94,17 +94,17 @@ My final model consisted of the following layers:
 To train the model, I used an AdamOptimizer to optimize cross entropy loss function between logits and one hot encoded labels
 of training data. I chose following hyperparameters:
 ```
-epochs = 10
-batch_size = 150
-learning_rate = 0.2
+epochs = 8
+batch_size = 120
+learning_rate = 0.002
 ```
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 0.992
+* validation set accuracy of 0.933 
+* test set accuracy of 0.897
 
 I chose to use the LeNet architecture for this project. I adjusted architecture from the LeNet lab to process
 colored images, because the color of sign is important for classifying it correctly. Also I adjusted the output layer
@@ -137,8 +137,8 @@ Here are the results of the prediction:
 |:---------------------:|:---------------------------------------------:|:-------------:| 
 | Priority road         | Priority road                                 | 12            |
 | Yield     			| Yield 										| 13            |
-| No Vehicles			| No Vehicles									| 15            |
-| Stop      		| Stop 					 				| 17            |
+| No Vehicles			| Speed limit (30km/h)									| 15            |
+| No entry      		| No entry 					 				| 17            |
 | General caution			| General caution     							    | 18            |
 | Bumpy road       | Bumpy road                               | 22            |
 | Road Work                  | Road Work                                          | 25            |
@@ -146,24 +146,94 @@ Here are the results of the prediction:
 
 
 The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.5%. 
-This compares favorably to the accuracy on the test set of ...
+This compares favorably to the accuracy on the test set of 89.7%.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were the following:
+Priority road:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.0         			| Priority road   									| 
+| .0     				| End of all speed and passing limits 										|
+| .0					| Dangerous curve to the left											|
+| .0	      			| Yield					 				|
+| .0				    | Speed limit (80km/h)      							|
+
+Yield:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| Yield   									| 
+| .0     				| No vehicles 										|
+| .0					| Ahead only											|
+| .0	      			| Priority road					 				|
+| .0				    | Speed limit (80km/h)      							|
 
 
-For the second image ... 
+No Vehicles:
+ 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.858         			| Speed limit (30km/h)   									| 
+| 0.095     				| Speed limit (70km/h) 										|
+| 0.035 					| Speed limit (50km/h)											|
+| 0.009 	      			| No vehicles					 				|
+| .0 				    | Turn right ahead      							|
+
+Road Work:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| Road Work   									| 
+| .0     				| Dangerous curve to the right 										|
+| .0					| Road narrows on the right											|
+| .0	      			| General caution					 				|
+| .0				    | Pedestrians      							|
+
+Ahead only:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.993         			| Ahead only   									| 
+| 0.006     				| Dangerous curve to the right 										|
+| .0					| Road narrows on the right											|
+| .0	      			| General caution					 				|
+| .0				    | Pedestrians      							|
+
+General caution:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.0         			| General caution   									| 
+| .0     				| Pedestrians 										|
+| .0					| Speed limit (70km/h)								|
+| .0	      			| Traffic signals					 				|
+| .0				    | Road narrows on the right      							|
+
+No entry:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.993         			| No entry   									| 
+| 0.006     				| Stop 										|
+| .0					| 	Speed limit (20km/h)											|
+| .0	      			| Yield					 				|
+| .0				    | Bumpy road      							|
+
+Bumpy road:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.997         			| Bumpy road   									| 
+| 0.001     				| Wild animals crossing 										|
+| 0.001					| Road work											|
+| .0	      			| Bicycles crossing					 				|
+| .0				    | Dangerous curve to the right      							|
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
