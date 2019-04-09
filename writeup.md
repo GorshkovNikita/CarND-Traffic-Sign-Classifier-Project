@@ -126,7 +126,7 @@ Here are eight German traffic signs that I found on Google Street View:
 <img src="./german_traffic_signs/25.png" height="100">
 <img src="./german_traffic_signs/35.png" height="100">
 
-Images with labels 15 (No Vehicles), 22 (Bunoy Road), 25 (Road Work), 35 (Ahead Only) might be difficult to classify because there aren't many samples of such signs in
+Images with labels 15 (No Vehicles), 22 (Bumpy Road), 25 (Road Work), 35 (Ahead Only) might be difficult to classify because there aren't many samples of such signs in
 training set.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
