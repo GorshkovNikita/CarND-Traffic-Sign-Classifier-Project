@@ -126,7 +126,7 @@ Here are eight German traffic signs that I found on Google Street View:
 <img src="./german_traffic_signs/25.png" height="100">
 <img src="./german_traffic_signs/35.png" height="100">
 
-Images with labels 15, 22, 25, 35 might be difficult to classify because there aren't many samples of such signs in
+Images with labels 15 (No Vehicles), 22 (Bunoy Road), 25 (Road Work), 35 (Ahead Only) might be difficult to classify because there aren't many samples of such signs in
 training set.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
@@ -137,12 +137,12 @@ Here are the results of the prediction:
 |:---------------------:|:---------------------------------------------:|:-------------:| 
 | Priority road         | Priority road                                 | 12            |
 | Yield     			| Yield 										| 13            |
-| No vehicles			| No vehicles									| 15            |
-| Road work      		| Road work 					 				| 17            |
-| Ahead only			| Ahead only      							    | 18            |
-| General caution       | General caution                               | 22            |
-| Stop                  | Stop                                          | 25            |
-| Bumpy road            | Bumpy road                                    | 35            |
+| No Vehicles			| No Vehicles									| 15            |
+| Stop      		| Stop 					 				| 17            |
+| General caution			| General caution     							    | 18            |
+| Bumpy road       | Bumpy road                               | 22            |
+| Road Work                  | Road Work                                          | 25            |
+| Ahead only            | Ahead only                                    | 35            |
 
 
 The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.5%. 
