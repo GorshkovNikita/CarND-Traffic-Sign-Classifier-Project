@@ -48,7 +48,8 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing number of examples of each sign in train data.
+Here is an exploratory visualization of the data set. 
+It is a bar chart showing number of examples of each sign in training set.
 
 ![alt text][image1]
 
@@ -72,20 +73,31 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x64 	|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 5x5	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride, outputs 14x14x6                   |
+| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x16.  |
+| RELU                  |                                               |
+| Max pooling           | 2x2 stride, outputs 5x5x16                    |
+| Flatten               | Outputs 400                                   |
+| Fully connected		| Outputs 120        							|
+| RELU                  |                                               |
+| Fully connected       | Outputs 84                                    |
+| RELU					|												|
+| Fully connected       | Outputs 43                                    |
+|:---------------------:|:---------------------------------------------:|
  
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used an AdamOptimizer to optimize cross entropy loss function between logits and one hot encoded labels
+of training data. I chose following hyperparameters:
+```
+epochs = 10
+batch_size = 150
+learning_rate = 0.2
+```
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -94,17 +106,9 @@ My final model results were:
 * validation set accuracy of ? 
 * test set accuracy of ?
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+I chose to use the LeNet architecture for this project. I adjusted architecture from the LeNet lab to process
+colored images, because the color of sign is important for classifying it correctly. Also I adjusted the output layer
+to have outout size equal to number of sign classes.
  
 
 ### Test a Model on New Images
@@ -122,22 +126,27 @@ Here are eight German traffic signs that I found on Google Street View:
 <img src="./german_traffic_signs/25.png" height="100">
 <img src="./german_traffic_signs/35.png" height="100">
 
-The first image might be difficult to classify because ...
+Images with labels 15, 22, 25, 35 might be difficult to classify because there aren't many samples of such signs in
+training set.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Image			        |     Prediction	        					| Actual label  |
+|:---------------------:|:---------------------------------------------:|:-------------:| 
+| Priority road         | Priority road                                 | 12            |
+| Yield     			| Yield 										| 13            |
+| No vehicles			| No vehicles									| 15            |
+| Road work      		| Road work 					 				| 17            |
+| Ahead only			| Ahead only      							    | 18            |
+| General caution       | General caution                               | 22            |
+| Stop                  | Stop                                          | 25            |
+| Bumpy road            | Bumpy road                                    | 35            |
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.5%. 
+This compares favorably to the accuracy on the test set of ...
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
